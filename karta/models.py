@@ -69,8 +69,8 @@ class Karte(models.Model):
     preis = models.FloatField(blank=True, null=True)
     bemerkung = models.CharField(max_length=500, blank=True)
     hat_ortsverzeichnis = models.BooleanField(default=False)
-    hat_hoehenlinien = models.NullBooleanField(default=False, null=True)
-    hat_gps = models.NullBooleanField(default=False, null=True)
+    hat_hoehenlinien = models.BooleanField(default=False, null=True)
+    hat_gps = models.BooleanField(default=False, null=True)
     hat_huelle = models.BooleanField(default=False)
     zustand = models.CharField(max_length=1, default='N', choices=[('N', 'Neu'),
                                                                    ('A', 'Alt')])
