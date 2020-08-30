@@ -1,0 +1,9 @@
+<ul>
+    {% for k in surrounding %}
+        <li {% if k.pk == karte.pk %}id="active-map"{% endif %} pk="{{ k.pk }}">
+        <a href="{% url "karte-detail" k.pk %}">
+            {{ k.name }}
+        </a>
+        </li>
+    {% endfor %}
+</ul>

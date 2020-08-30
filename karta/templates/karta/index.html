@@ -1,0 +1,25 @@
+{% extends "karta/base_geo.html" %}
+{% load static %}
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "karta/index.css" %}">
+{% endblock %}
+{% block hauptinhalt %}
+<script type="text/javascript">
+    function map_init(map, options){
+        /* wird aufgerufen, nachdem Dokument geladen hat */
+        add_maps(map, "{% url 'all-geojson' %}", onEachFeatureIndex)
+            .then((features) => collect_maps_by_pk());
+    }
+</script>
+
+<div id="content">
+    {% include "karta/leaflet-map.html" with id="karte" callback="map_init" %}
+<div id="kartenliste">
+    {% for name, karten in ablagen.items %}
+        <h2>{{ name }}</h2>
+        {% include "karta/kartenliste.html" with surrounding=karten %}
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

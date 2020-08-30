@@ -1,0 +1,14 @@
+{% comment %}
+Template to include a leaflet map in html. Variables:
+    id: The id that the map will get
+    view: The view (position and zoom) on which the map will start, in the format "[lat, long], zoom"
+    callback: The function to be called, only after the whole page is loaded, with map as an argument
+{% endcomment %}
+
+<div id="{{ id }}"></div>
+<script>
+    var map = L.map('{{ id }}').setView({{ map_view | default:"[50, 10],6" }});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                        attribution: '© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    window.onload = function(){ {{ callback }}(map); };
+</script>

@@ -1,0 +1,35 @@
+#heading{
+    padding: 0 12px;
+}
+#content{
+    padding: 0 12px;
+}
+#info{
+    width: 380px;
+    padding: 0 12px;
+    height: 100%;
+    overflow: scroll;
+}
+#info table{
+    width: 100%;
+    border-collapse: collapse;
+}
+#info table td{
+    border-bottom: 1px solid darkslategrey;
+    padding: 6px 0;
+}
+#info table td.value{
+    text-align: right;
+}
+#detail-map{
+    flex: 1;
+}
+#nomap-warning{
+    flex: 1;
+}
+#kartenliste{
+    width: 380px;
+    float: right;
+    border-left: 1px solid black;
+}
+

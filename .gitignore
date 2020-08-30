@@ -1,0 +1,8 @@
+# PyCharm files
+.idea
+
+__pycache__
+
+# Leaflet
+leaflet.css
+leaflet.js

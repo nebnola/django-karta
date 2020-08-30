@@ -1,0 +1,83 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#header{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: darkslategrey;
+    color: white;
+}
+
+#header div{
+    flex: 1;
+}
+#header a{
+    color: inherit;
+}
+#header a:hover{
+    text-decoration: none;
+}
+#home{text-align: left;}
+#admin{text-align: right;}
+#banner{
+    font-size: 2em;
+    text-align: center;
+}
+
+#content{
+    display: flex;
+    height: 400px;
+    flex-grow: 1;
+}
+.leaflet-container{
+}
+
+path.leaflet-interactive.hovered, path.leaflet-interactive.focused{
+    stroke: black;
+}
+
+#kartenliste{
+    width: 350px;
+    height: 100%;
+    overflow: scroll;
+}
+
+#kartenliste h2{
+    margin: 6px;
+}
+
+#kartenliste>ul{
+    /* Anführungspunkte entfernen */
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#kartenliste li{
+    padding: 6px;
+    border-bottom: 1px solid black;
+}
+
+#kartenliste li:hover{
+    background-color: lightgrey;
+}
+
+#kartenliste li>a{
+    display: block; /* um alles auszufüllen -> mehr clickbare Fläche */
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+#active-map{
+    font-weight: bold;
+}

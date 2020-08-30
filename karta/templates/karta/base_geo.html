@@ -1,0 +1,8 @@
+{% extends "karta/base.html" %}
+{% load static %}
+{% block head %}
+    {% comment %} include stylesheet and JS for leaflet {% endcomment %}
+    <link rel="stylesheet" href="{%  static 'karta/leaflet/leaflet.css' %}"/>
+    <script src="{% static 'karta/leaflet/leaflet.js' %}"></script>
+    <script type="text/javascript" src="{% static 'karta/maps.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "karta/base_geo.html" %}
+{% load static %}
+{% block titel %}{{karte.name}}{% endblock %}
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "karta/karte.css" %}">
+{% endblock %}
+
+{% block admin-link %}
+<a href="{% url "admin:karta_karte_change" karte.pk %}">
+    Auf Admin-Seite bearbeiten
+</a>
+{% endblock %}
+
+{% block hauptinhalt %}
+    <div id="heading">
+        <h1>{{ karte.name }}</h1>
+    </div>
+    <div id="content">
+        {% comment %} Karte nur zeigen, wenn es auch was zu zeigen gibt {% endcomment %}
+        {% if karte.geojson_set %}
+        <script type="text/javascript">
+            function map_init (map, options) {
+                map.invalidateSize(); /* width of map is not defined at beginning because of flexbox. This is necessary to make fitBounds() work */
+                add_maps(map, "{% url 'karte-geojson' karte.pk %}", onEachFeatureMap)
+                    .then((geojson)=>resize_map(map, geojson))
+                    .then(() => collect_related_li());
+            }
+        </script>
+        {% include "karta/leaflet-map.html" with id="detail-map" callback="map_init" %}
+
+        {% else %}
+            <div id="nomap-warning">
+            Karte kann nicht angezeigt werden, es gibt keine Koordinaten.
+            </div>
+        {% endif %}
+        <div id="info">
+            <table>
+                {% for key, val in karte.list_information.items %}
+                    <tr>
+                        <td>{{ key }}:</td><td class="value">{{ val }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <h2>Ansichten</h2>
+            <table>
+            <tr>
+                <th>Kurzbeschreibung</th><th class="value">Maßstab</th>
+            </tr>
+            {% for ansicht in karte.ansicht_set.all %}
+            <tr pk="{{ ansicht.pk }}">
+            <td>{{ ansicht.kurzbeschreibung }}</td><td class="value">{{ ansicht.massstab_f }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <div id="kartenliste">
+            <h2>Ablageort: {{ karte.ablageort.name }}</h2>
+            {% include "karta/kartenliste.html" %}
+        </div>
+    </div>
+{% endblock %}

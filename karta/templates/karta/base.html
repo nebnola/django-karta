@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titel %}Karten{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "karta/general.css" %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+<div id="header">
+    {% block header %}
+    <div id="home">
+        <a href="/">Home</a>
+    </div>
+    <div id="banner">
+    Karten
+    </div>
+    <div id="admin">
+        {% block admin-link %}
+        <a href="{% url "admin:index" %}">
+            Admin
+        </a>
+        {% endblock admin-link %}
+    </div>
+    {% endblock header %}
+</div>
+    {% block hauptinhalt %}{% endblock %}
+
+</body>
+</html>
