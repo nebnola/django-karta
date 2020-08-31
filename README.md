@@ -20,32 +20,33 @@ myproject`
 in `myproject/settings.py`).
 * Add karta to your project's `INSTALLED_APPS`:
 
-    
-    # myproject/settings.py
-    
+```python
+# myproject/settings.py
+
+...
+
+INSTALLED_APPS=[
+    ...,
+    'karta.apps.KartaConfig',
     ...
-    
-    INSTALLED_APPS=[
-        ...
-        'karta.apps.KartaConfig',
-        ...
-    ]
+]
+```
 
 * Include karta's URLs in your project:
 
+```python
+# myproject/urls.py
 
+from django.urls import include, path
 
-    # myproject/urls.py
-    
-    from django.urls import include, path
-    
+...
+
+urlpatterns = [
+    ...,
+    path('path/to/karta/', include('karta.urls')),
     ...
-    
-    urlpatterns = [
-        ...
-        path('path/to/karta/', include('karta.urls')),
-        ...
-    ]
+]
+```
 
 * [Download](https://leafletjs.com/download.html) `leaflet.js` and `leaflet.css`
 and place them under `karta/static/karta/leaflet`. This is necessary to make the interactive map work.
