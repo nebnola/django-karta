@@ -30,6 +30,26 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='Gebiet',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=150)),
+            ],
+            options={
+                'verbose_name_plural': 'Gebiete',
+            },
+        ),
+        migrations.CreateModel(
+            name='Land',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=150)),
+            ],
+            options={
+                'verbose_name_plural': 'Länder',
+            },
+        ),
+        migrations.CreateModel(
             name='Karte',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -154,26 +174,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='karte',
             name='laender',
-        ),
-        migrations.CreateModel(
-            name='Gebiet',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150)),
-            ],
-            options={
-                'verbose_name_plural': 'Gebiete',
-            },
-        ),
-        migrations.CreateModel(
-            name='Land',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=150)),
-            ],
-            options={
-                'verbose_name_plural': 'Länder',
-            },
         ),
         migrations.AddField(
             model_name='gebiet',
