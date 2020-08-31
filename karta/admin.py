@@ -51,5 +51,13 @@ class GebietAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Land)
-class GebietAdmin(admin.ModelAdmin):
+class LandAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Zweck)
+class ZweckAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Ablageort)
+class AblageortAdmin(admin.ModelAdmin):
     pass

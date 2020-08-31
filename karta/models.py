@@ -56,13 +56,13 @@ class Gebiet(NameClass):
 
 class Karte(models.Model):
     name = models.CharField(max_length=150)
-    zwecke = models.ManyToManyField(Zweck)
-    ablageort = models.ForeignKey(Ablageort, null=True, on_delete=models.PROTECT)
+    zwecke = models.ManyToManyField(Zweck, blank=True)
+    ablageort = models.ForeignKey(Ablageort, on_delete=models.PROTECT)
     reihenfolge = models.FloatField(null=True)
     # Eine Karte stellt ihre Gebiete mehr oder weniger vollständig dar
-    gebiete = models.ManyToManyField(Gebiet, related_name='karten')
+    gebiete = models.ManyToManyField(Gebiet, blank=True, related_name='karten')
     # laender enthaelt alle Laender, von denen die Karte Teile darstellt.
-    laender = models.ManyToManyField(Land, related_name='karten_in_land')
+    laender = models.ManyToManyField(Land, blank=True, related_name='karten_in_land')
     verlag = models.ForeignKey(Verlag, null=True, blank=True, on_delete=models.PROTECT)
     stand = models.DateField(blank=True, null=True)
     hinzugefuegt = models.DateField(default=date.today, blank=True, null=True)
