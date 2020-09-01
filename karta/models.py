@@ -94,7 +94,7 @@ class Karte(models.Model):
         ansichten = self.ansicht_set.all()
         returnset = []
         for ansicht in ansichten:
-            if not ansicht.koords_json:
+            if not ansicht.koords:
                 continue
             feature = {"type": "Feature",
                        "properties": {
@@ -124,7 +124,9 @@ class Ansicht(models.Model):
     """Eine Karte ist **eine,** physische Karte. Eine Ansicht ist eine "Teilkarte" einer Karte."""
     karte = models.ForeignKey(Karte, on_delete=models.CASCADE)
     massstab = models.IntegerField(blank=True, null=True)
-    koords_json = models.CharField(max_length=1000, blank=True, null=True)
+    # koords ist eine Liste von Koordinaten. Koordinaten sind wiederum eine Liste der Form [lon, lat]
+    # ! Zuerst der Längengrad (Ost/West) dann der Breitengrad (Nord/Süd)
+    koords = models.JSONField(blank = True, null=True)
     kurzbeschreibung = models.CharField(max_length=150, blank=True)
 
     def __str__(self):
@@ -135,18 +137,6 @@ class Ansicht(models.Model):
         if self.massstab:
             return f"1:{self.massstab}"
         return "Unbekannt"
-    # koords ist eine Liste von Koordinaten. Koordinaten sind wiederum eine Liste der Form [lon, lat]
-    # ! Zuerst der Längengrad (Ost/West) dann der Breitengrad (Nord/Süd)
-    @property
-    def koords(self):
-        try:
-            return json.loads(self.koords_json)
-        except TypeError:
-            return []
-
-    @koords.setter
-    def koords(self, newcoords):
-        self.koords_json = json.dumps(newcoords)
 
     class Meta:
         verbose_name_plural = 'Ansichten'

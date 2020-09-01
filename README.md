@@ -57,3 +57,7 @@ and place them under `karta/static/karta/leaflet`. This is necessary to make the
 use the admin functionality to add and edit maps: `python manage.py createsuperuser`
 
 * Try it out! `python manage.py runserver` and visit `127.0.0.1:8000` in your browser
+
+* Note: If you use SQLite as your database, the JSON1 extension needs to be enabled
+(which is probably already the case). For more information see the
+[Django wiki](https://code.djangoproject.com/wiki/JSON1Extension).
