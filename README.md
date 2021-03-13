@@ -4,6 +4,9 @@ A database can store information such as the age of the map, its features
 Maps are displayed on an interactive leaflet map so you can pick the a map that
 covers your area of interest.
 
+## Screenshots
+
+<img src="https://raw.githubusercontent.com/nebnola/django-karta/master/img/screenshot_1.png" width=500/><img src="https://raw.githubusercontent.com/nebnola/django-karta/master/img/screenshot_2.png" width=500/><img src="https://raw.githubusercontent.com/nebnola/django-karta/master/img/screenshot_3.png" width=500/><img src="https://raw.githubusercontent.com/nebnola/django-karta/master/img/screenshot_4.png" width=500/><img src="https://raw.githubusercontent.com/nebnola/django-karta/master/img/screenshot_5.png" width=500/>
 ## Dependencies
 
 * Python 3.8
